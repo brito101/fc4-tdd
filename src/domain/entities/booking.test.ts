@@ -2,6 +2,7 @@ import { DateRange } from "../value_objects/date_range";
 import { Property } from "./property";
 import { User } from "./user";
 import { Booking } from "./booking";
+
 describe("Booking Entity", () => {
   it("deve criar uma instância de Booking com todos os atributos", () => {
     const property = new Property("1", "Casa", "Descrição", 4, 100);

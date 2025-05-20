@@ -78,4 +78,27 @@ describe("Property Entity", () => {
     expect(property.isAvailable(dateRange)).toBe(false);
     expect(property.isAvailable(dateRange2)).toBe(false);
   });
+
+  it("deve teestar a adição de Reserva", () => {
+    const property = new Property("1", "Apartamento", "Descrição", 4, 200);
+    const user1 = new User("1", "Maria Silva");
+    const dateRange1 = new DateRange(
+      new Date("2024-12-20"),
+      new Date("2024-12-25")
+    );
+
+    new Booking("1", property, user1, dateRange1, 2);
+
+    expect(property.addBooking.call);
+    expect(property.getBookigs()).toHaveLength(1);
+
+    const user2 = new User("1", "Maria Silva");
+    const dateRange2 = new DateRange(
+      new Date("2024-12-26"),
+      new Date("2024-12-31")
+    );
+
+    new Booking("2", property, user2, dateRange2, 2);
+    expect(property.getBookigs()).toHaveLength(2);
+  });
 });

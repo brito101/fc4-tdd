@@ -10,17 +10,21 @@ export class Property {
     private maxGuests: number,
     private basePricePerNight: number
   ) {
+    this.validate(name, maxGuests);
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.maxGuests = maxGuests;
+    this.basePricePerNight = basePricePerNight;
+  }
+
+  private validate(name: string, maxGuests: number): void {
     if (!name) {
       throw new Error("O nome é obrigatório");
     }
     if (maxGuests <= 0) {
       throw new Error("O número máximo de hóspedes deve ser maior que zero");
     }
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.maxGuests = maxGuests;
-    this.basePricePerNight = basePricePerNight;
   }
 
   getId(): string {
@@ -41,6 +45,10 @@ export class Property {
 
   getBasePricePerNight(): number {
     return this.basePricePerNight;
+  }
+
+  getBookigs(): Booking[] {
+    return this.bookings;
   }
 
   validateGuestCount(guestCount: number): void {

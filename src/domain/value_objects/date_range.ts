@@ -3,12 +3,12 @@ export class DateRange {
   private readonly endDate: Date;
 
   constructor(startDate: Date, endDate: Date) {
-    this.validateDates(startDate, endDate);
+    this.validate(startDate, endDate);
     this.startDate = startDate;
     this.endDate = endDate;
   }
 
-  private validateDates(startDate: Date, endDate: Date): void {
+  private validate(startDate: Date, endDate: Date): void {
     if (startDate == endDate) {
       throw new Error("A data de início e término não podem ser iguais.");
     }

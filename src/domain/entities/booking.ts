@@ -21,6 +21,23 @@ export class Booking {
     dateRange: DateRange,
     guestCount: number
   ) {
+    this.validate(guestCount, property, dateRange);
+    this.id = id;
+    this.property = property;
+    this.guest = guest;
+    this.dateRange = dateRange;
+    this.guestCount = guestCount;
+    this.totalPrice = property.calculateTotalPrice(dateRange);
+    this.status = "CONFIRMED";
+
+    property.addBooking(this);
+  }
+
+  private validate(
+    guestCount: number,
+    property: Property,
+    dateRange: DateRange
+  ): void {
     if (guestCount <= 0) {
       throw new Error("O número de hóspedes deve ser maior que zero.");
     }
@@ -31,16 +48,6 @@ export class Booking {
         "A propriedade não está disponível para o período selecionado."
       );
     }
-
-    this.id = id;
-    this.property = property;
-    this.guest = guest;
-    this.dateRange = dateRange;
-    this.guestCount = guestCount;
-    this.totalPrice = property.calculateTotalPrice(dateRange);
-    this.status = "CONFIRMED";
-
-    property.addBooking(this);
   }
 
   getId(): string {
