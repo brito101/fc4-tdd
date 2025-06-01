@@ -7,7 +7,7 @@ import { PropertyEntity } from "../entities/property_entity";
 import { UserEntity } from "../entities/user_entity";
 import { BookingMapper } from "./booking_mapper";
 
-describe("PropertyMapper", () => {
+describe("BookingMapper", () => {
   it("deve converter BookingEntity em Booking corretamente", () => {
     const propertyEntity: PropertyEntity = {
       id: "1",
